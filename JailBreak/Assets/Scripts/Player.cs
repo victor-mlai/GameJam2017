@@ -15,8 +15,10 @@ public class Player : MonoBehaviour
     public float cameraOrbitUpLimitAngle = 5.0f;
     public float cameraOrbitDownLimitAngle = -5.0f;
 
+    GameObject inventory;
+    GameObject map;
     [HideInInspector]
-    public bool isCaught;
+    public bool isPlayerInputDisabled;
 
     // Use this for initialization
     enum possibleActions { kill, take, open, nothing };
@@ -27,12 +29,25 @@ public class Player : MonoBehaviour
     void Start()
     {
         mouseYAxisTotal = 0.0f;
-        isCaught = false;
+        isPlayerInputDisabled = false;
+        inventory = GameObject.Find("Canvas").transform.Find("Inventory").gameObject;
+        map = GameObject.Find("Canvas").transform.Find("Map").gameObject;
     }
 
     private void Update()
     {
-        if (!isCaught)
+        if (Input.GetKeyDown("i"))
+        {
+            //TODO deactivate camera movement
+            SetPlayerDisabled(true);
+            inventory.SetActive(!inventory.active);
+            if (!inventory.active && !map.active)
+            {
+                SetPlayerDisabled(false);
+            }
+        }
+
+        if (!isPlayerInputDisabled)
         {
             float mouseXForCamera = Input.GetAxis("Mouse X");
             float mouseYForCamera = -1.0f * Input.GetAxis("Mouse Y");
@@ -83,7 +98,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isCaught)
+        if (!isPlayerInputDisabled)
         {
             rotateAroundUpAxis = Input.GetAxis("Horizontal");
             moveForward = 1.0f * Input.GetAxis("Vertical");
@@ -128,5 +143,10 @@ public class Player : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         AfterAction();
+    }
+
+    public void SetPlayerDisabled(bool value)
+    {
+        isPlayerInputDisabled = value;
     }
 }

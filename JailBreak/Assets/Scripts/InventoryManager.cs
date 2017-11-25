@@ -76,5 +76,6 @@ public class InventoryManager : MonoBehaviour {
         }
 
         //TODO reactivate camera
+        //player.SetPlayerDisabled(false);
     }
 }
