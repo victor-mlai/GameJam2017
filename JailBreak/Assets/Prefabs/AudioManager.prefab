@@ -61,14 +61,133 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Blick
     clip: {fileID: 8300000, guid: 6904f847699ff084c8ab9b8a55ddef66, type: 3}
-    volume: 5
+    volume: 0.5
     pitch: 1
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
   - name: ButtonHover
     clip: {fileID: 8300000, guid: 61b41f75fcc17314ea16d81cd151192f, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Dressing
+    clip: {fileID: 8300000, guid: 67f9219bd5fcbca44ab44a1818a2a7ff, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Map Fold
+    clip: {fileID: 8300000, guid: 8fae2b1389a2c5c4ca5bf16c37c8f153, type: 3}
     volume: 5
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Prison Background
+    clip: {fileID: 8300000, guid: 853afc1560d7dba4aa46edd32b487925, type: 3}
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Key
+    clip: {fileID: 8300000, guid: 5487c7082383f9a4b9fb2bfd52fcf648, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Inventory
+    clip: {fileID: 8300000, guid: 617a056f4a02e04428d4f076d38cf8b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: CellDoor
+    clip: {fileID: 8300000, guid: e94043b9f44abc844a13fc023b5359c8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: DoorUnlock
+    clip: {fileID: 8300000, guid: 828520097b5399446a2844f280aae04b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Zipsound
+    clip: {fileID: 8300000, guid: dce447249e209a14381401413cee87b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Inventory
+    clip: {fileID: 8300000, guid: 617a056f4a02e04428d4f076d38cf8b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Inventory
+    clip: {fileID: 8300000, guid: 617a056f4a02e04428d4f076d38cf8b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Inventory
+    clip: {fileID: 8300000, guid: 617a056f4a02e04428d4f076d38cf8b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Inventory
+    clip: {fileID: 8300000, guid: 617a056f4a02e04428d4f076d38cf8b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Inventory
+    clip: {fileID: 8300000, guid: 617a056f4a02e04428d4f076d38cf8b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Inventory
+    clip: {fileID: 8300000, guid: 617a056f4a02e04428d4f076d38cf8b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Inventory
+    clip: {fileID: 8300000, guid: 617a056f4a02e04428d4f076d38cf8b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Inventory
+    clip: {fileID: 8300000, guid: 617a056f4a02e04428d4f076d38cf8b0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: Inventory
+    clip: {fileID: 8300000, guid: 617a056f4a02e04428d4f076d38cf8b0, type: 3}
+    volume: 1
     pitch: 1
     loop: 0
     playOnAwake: 0

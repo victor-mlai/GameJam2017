@@ -10,6 +10,7 @@ public class InventoryManager : MonoBehaviour {
     public List<Sprite> sprites;
     List<GameObject> slots = new List<GameObject>();
     public GameObject map;
+    AudioManager audioManager;
 
     // Use this for initialization
     void Start () {
@@ -21,6 +22,7 @@ public class InventoryManager : MonoBehaviour {
         }
 
         player = GameObject.Find("Player").GetComponent<Player>();
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         inventoryList = new List<string>();
         inventoryList.Add("map");
         inventoryList.Add("key");
@@ -68,6 +70,7 @@ public class InventoryManager : MonoBehaviour {
             case "key":
                 break;
             case "Map":
+                audioManager.Play("Map Fold");
                 map.SetActive(true);
                 gameObject.SetActive(false);
                 break;

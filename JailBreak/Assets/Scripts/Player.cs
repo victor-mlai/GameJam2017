@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     GameObject map;
     [HideInInspector]
     public bool isPlayerInputDisabled;
+    AudioManager audioManager;
 
     // Use this for initialization
     enum possibleActions { kill, take, open, nothing };
@@ -32,17 +33,24 @@ public class Player : MonoBehaviour
         isPlayerInputDisabled = false;
         inventory = GameObject.Find("Canvas").transform.Find("Inventory").gameObject;
         map = GameObject.Find("Canvas").transform.Find("Map").gameObject;
+        audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown("i"))
         {
-            //TODO deactivate camera movement
-            SetPlayerDisabled(true);
-            inventory.SetActive(!inventory.active);
+            // inventory is not active and the map is not on the screen
             if (!inventory.active && !map.active)
             {
+                inventory.SetActive(true);
+                audioManager.Play("Inventory");
+                SetPlayerDisabled(true);
+            }
+            else if (inventory.active) //if the inventory is active
+            {
+                inventory.SetActive(false);
+                audioManager.Play("Inventory");
                 SetPlayerDisabled(false);
             }
         }
