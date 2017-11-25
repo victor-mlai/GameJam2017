@@ -143,8 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75391f11843e1c541b92eb01c9dc6337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
   text: {fileID: 0}
+  shoulderCamera: {fileID: 0}
 --- !u!54 &37366207
 Rigidbody:
   m_ObjectHideFlags: 0

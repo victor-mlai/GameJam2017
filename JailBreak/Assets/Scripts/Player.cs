@@ -5,81 +5,77 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    List<string> inventoryList = new List<string>();
+    Animator anim;
+    Collider currentCollider;
+    float rotateAroundUpAxis, moveForward;
     public int moveSpeed = 10;
-    public int rotateSpeed = 5000;
+    public int rotateSpeed = 100;
+    public Text text;
     public Camera shoulderCamera;
     public float cameraOrbitUpLimitAngle = 5.0f;
     public float cameraOrbitDownLimitAngle = -5.0f;
-    float rotateAroundUpAxis, moveForward;
-    Animator anim;
-    Collider currentCollider;
-    float movex, movez;
-    public int speed = 10;
-    public Text text, inventoryText;
+
+    [HideInInspector]
+    public bool isCaught;
+
     // Use this for initialization
     enum possibleActions { kill, take, open, nothing };
     possibleActions toDoAction;
+
     private float mouseYAxisTotal;
+
     void Start()
     {
         mouseYAxisTotal = 0.0f;
-        anim = GetComponent<Animator>();
-        inventoryText.text = "Invetory :";
-
+        isCaught = false;
     }
 
     private void Update()
     {
-
-        float mouseXForCamera = Input.GetAxis("Mouse X");
-        float mouseYForCamera = -1.0f * Input.GetAxis("Mouse Y");
-
-        mouseYAxisTotal += mouseYForCamera;
-        if (mouseYAxisTotal > cameraOrbitUpLimitAngle)
+        if (!isCaught)
         {
-            mouseYAxisTotal = cameraOrbitUpLimitAngle;
-            mouseYForCamera = 0.0f;
-        }
-        else if (mouseYAxisTotal < cameraOrbitDownLimitAngle)
-        {
-            mouseYAxisTotal = cameraOrbitDownLimitAngle;
-            mouseYForCamera = 0.0f;
-        }
+            float mouseXForCamera = Input.GetAxis("Mouse X");
+            float mouseYForCamera = -1.0f * Input.GetAxis("Mouse Y");
 
-        shoulderCamera.transform.RotateAround(gameObject.transform.position, Vector3.up, mouseXForCamera * 2);
-        shoulderCamera.transform.Rotate(Vector3.right, mouseYForCamera * 2);
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-
-            if (currentCollider != null)
+            mouseYAxisTotal += mouseYForCamera;
+            if (mouseYAxisTotal > cameraOrbitUpLimitAngle)
             {
-                Debug.Log("Action to do: " + toDoAction);
-                if (toDoAction == possibleActions.open) {
-                    if (inventoryList.Contains("Keys")) currentCollider.gameObject.GetComponent<Door>().openDoor();
-                    else text.text = "You need a key to open this door";
-                    //anim.SetTrigger("open");
-                }
-                else if (toDoAction == possibleActions.kill)
+                mouseYAxisTotal = cameraOrbitUpLimitAngle;
+                mouseYForCamera = 0.0f;
+            }
+            else if (mouseYAxisTotal < cameraOrbitDownLimitAngle)
+            {
+                mouseYAxisTotal = cameraOrbitDownLimitAngle;
+                mouseYForCamera = 0.0f;
+            }
+
+            shoulderCamera.transform.RotateAround(gameObject.transform.position, Vector3.up, mouseXForCamera * 2);
+            shoulderCamera.transform.Rotate(Vector3.right, mouseYForCamera * 2);
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (currentCollider != null)
                 {
-                    currentCollider.gameObject.GetComponent<Animator>().SetTrigger("Die");
+                    Debug.Log("Action to do: " + toDoAction);
+                    if (toDoAction == possibleActions.open)
+                    {
+                        //currentCollider.gameObject.GetComponent<Door>().openDoor();
+                        //anim.SetTrigger("open");
+                    }
+                    else if (toDoAction == possibleActions.kill)
+                    {
+                        currentCollider.gameObject.GetComponent<Animator>().SetTrigger("Die");
 
-                    //anim.SetTrigger("killing");
+                        //anim.SetTrigger("killing");
+                    }
+                    else if (toDoAction == possibleActions.take)
+                    {
+                        Destroy(currentCollider.gameObject);
+                        Debug.Log("You took " + currentCollider.gameObject.name);
+                        //anim.SetTrigger("take");
+                        AfterAction();
+                    }
                 }
-                else if (toDoAction == possibleActions.take)
-                {
-
-                    Debug.Log("You took " + currentCollider.gameObject.name);
-                    inventoryList.Add(currentCollider.gameObject.name);
-
-                    inventoryText.text += currentCollider.gameObject.name + ", ";
-                    //anim.SetTrigger("take");
-                    Destroy(currentCollider.gameObject);
-                    AfterAction();
-                }
-
-
             }
         }
     }
@@ -87,29 +83,18 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        rotateAroundUpAxis = Input.GetAxis("Horizontal");
-        moveForward = 1.0f * Input.GetAxis("Vertical");
-
-        transform.Translate(new Vector3(0, 0, moveForward * moveSpeed * Time.fixedDeltaTime));
-        transform.Rotate(0, rotateAroundUpAxis * rotateSpeed * Time.fixedDeltaTime, 0);
-
-        transform.Translate(new Vector3(movex * speed * Time.deltaTime, 0, movez * speed * Time.deltaTime));
-        //  Debug.Log(movez);
-        if (movez > 0.4f)
+        if (!isCaught)
         {
-            anim.SetBool("running", true);
-        }
-        else
-        {
-            anim.SetBool("running", false);
+            rotateAroundUpAxis = Input.GetAxis("Horizontal");
+            moveForward = 1.0f * Input.GetAxis("Vertical");
+
+            transform.Rotate(0, rotateAroundUpAxis * rotateSpeed * Time.fixedDeltaTime, 0);
+            transform.Translate(new Vector3(0, 0, moveForward * moveSpeed * Time.fixedDeltaTime));
         }
     }
 
     void OnTriggerEnter(Collider col)
     {
-
-        Debug.Log(col.gameObject.name);
         if (col.tag == "killable")
         {
             text.text = "Press E to kill";
@@ -139,10 +124,9 @@ public class Player : MonoBehaviour
         toDoAction = possibleActions.nothing;
 
     }
+
     private void OnTriggerExit(Collider other)
     {
         AfterAction();
-
     }
-
 }
