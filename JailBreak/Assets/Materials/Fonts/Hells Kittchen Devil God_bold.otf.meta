@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 066dfb377a5c79e42a0c22f5e75eb9a3
+timeCreated: 1511620253
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Hells Kittchen Devil God
+  fontNames:
+  - Hells Kittchen Devil God
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 2ebc236c19cb14c4f91feb969b8a888f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
