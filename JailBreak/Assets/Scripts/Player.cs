@@ -50,12 +50,13 @@ public class Player : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+
             if (currentCollider != null)
             {
                 Debug.Log("Action to do: " + toDoAction);
                 if (toDoAction == possibleActions.open) {
-                    if (inventoryList.Contains("Keys")) currentCollider.gameObject.GetComponent<Door>().openDoor();
-                    else text.text = "You need a key to open this door";
+                    //if (inventoryList.Contains("Keys")) currentCollider.gameObject.GetComponent<Door>().openDoor();
+                    //else text.text = "You need a key to open this door";
                     //anim.SetTrigger("open");
                 }
                 else if (toDoAction == possibleActions.kill)
