@@ -10,9 +10,12 @@ public class Player : MonoBehaviour
     float movex, movez;
     public int speed = 10;
     public Text text;
+    public Camera shoulderCamera;
+
     // Use this for initialization
     enum possibleActions { kill, take, open, nothing };
     possibleActions toDoAction;
+
     void Start()
     {
 
@@ -59,7 +62,6 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-
         Debug.Log(col.gameObject.name);
         if (col.tag == "killable")
         {
@@ -90,10 +92,9 @@ public class Player : MonoBehaviour
         toDoAction = possibleActions.nothing;
 
     }
+
     private void OnTriggerExit(Collider other)
     {
         afterAction();
-
     }
-
 }
