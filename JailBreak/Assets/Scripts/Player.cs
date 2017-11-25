@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
     List<string> inventoryList = new List<string>();
     public int moveSpeed = 10;
     public int rotateSpeed = 5000;
@@ -16,11 +17,12 @@ public class Player : MonoBehaviour {
     float movex, movez;
     public int speed = 10;
     public Text text, inventoryText;
-	// Use this for initialization
-    enum possibleActions {kill,take,open,nothing};
+    // Use this for initialization
+    enum possibleActions { kill, take, open, nothing };
     possibleActions toDoAction;
     private float mouseYAxisTotal;
-    void Start () {
+    void Start()
+    {
         mouseYAxisTotal = 0.0f;
         anim = GetComponent<Animator>();
         inventoryText.text = "Invetory :";
@@ -53,9 +55,10 @@ public class Player : MonoBehaviour {
             if (currentCollider != null)
             {
                 Debug.Log("Action to do: " + toDoAction);
-                if (toDoAction == possibleActions.open) {
-                    if (inventoryList.Contains("Keys")) currentCollider.gameObject.GetComponent<Door>().openDoor();
-                    else text.text = "You need a key to open this door";
+                if (toDoAction == possibleActions.open)
+                {
+                    //if (inventoryList.Contains("Keys")) currentCollider.gameObject.GetComponent<Door>().openDoor();
+                   // else text.text = "You need a key to open this door";
                     //anim.SetTrigger("open");
                 }
                 else if (toDoAction == possibleActions.kill)
@@ -66,11 +69,11 @@ public class Player : MonoBehaviour {
                 }
                 else if (toDoAction == possibleActions.take)
                 {
-                   
+
                     Debug.Log("You took " + currentCollider.gameObject.name);
                     inventoryList.Add(currentCollider.gameObject.name);
-                   
-                    inventoryText.text += currentCollider.gameObject.name+", ";
+
+                    inventoryText.text += currentCollider.gameObject.name + ", ";
                     //anim.SetTrigger("take");
                     Destroy(currentCollider.gameObject);
                     AfterAction();
@@ -82,7 +85,8 @@ public class Player : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void FixedUpdate () {
+    void FixedUpdate()
+    {
 
         rotateAroundUpAxis = Input.GetAxis("Horizontal");
         moveForward = 1.0f * Input.GetAxis("Vertical");
@@ -91,15 +95,16 @@ public class Player : MonoBehaviour {
         transform.Rotate(0, rotateAroundUpAxis * rotateSpeed * Time.fixedDeltaTime, 0);
 
         transform.Translate(new Vector3(movex * speed * Time.deltaTime, 0, movez * speed * Time.deltaTime));
-      //  Debug.Log(movez);
+        //  Debug.Log(movez);
         if (movez > 0.4f)
         {
-            anim.SetBool("running",true);
-        }else
+            anim.SetBool("running", true);
+        }
+        else
         {
             anim.SetBool("running", false);
         }
-	}
+    }
 
     void OnTriggerEnter(Collider col)
     {
@@ -116,7 +121,7 @@ public class Player : MonoBehaviour {
             text.text = "Press E to take " + col.gameObject.name;
             currentCollider = col;
             toDoAction = possibleActions.take;
-            
+
 
         }
         else if (col.tag == "openable")
