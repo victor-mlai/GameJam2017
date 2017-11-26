@@ -17,9 +17,11 @@ public class Player : MonoBehaviour
 
     GameObject inventory;
     GameObject map;
+    GameObject dialogue;
+    AudioManager audioManager;
+
     [HideInInspector]
     public bool isPlayerInputDisabled;
-    AudioManager audioManager;
 
     // Use this for initialization
     enum possibleActions { kill, take, open, nothing };
@@ -32,6 +34,7 @@ public class Player : MonoBehaviour
         mouseYAxisTotal = 0.0f;
         isPlayerInputDisabled = false;
         inventory = GameObject.Find("Canvas").transform.Find("Inventory").gameObject;
+        dialogue = GameObject.Find("Canvas").transform.Find("Dialogue").gameObject;
         map = GameObject.Find("Canvas").transform.Find("Map").gameObject;
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
@@ -41,7 +44,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown("i"))
         {
             // inventory is not active and the map is not on the screen
-            if (!inventory.active && !map.active)
+            if (!inventory.active && !map.active && !dialogue.active)
             {
                 inventory.SetActive(true);
                 audioManager.Play("Inventory");
@@ -53,6 +56,11 @@ public class Player : MonoBehaviour
                 audioManager.Play("Inventory");
                 SetPlayerDisabled(false);
             }
+        }
+
+        if (Input.GetKeyDown("m"))
+        {
+            dialogue.SetActive(true);
         }
 
         if (!isPlayerInputDisabled)
@@ -151,6 +159,12 @@ public class Player : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         AfterAction();
+    }
+
+    public List<string> GetInventoryList()
+    {
+        //return inven
+        return null;
     }
 
     public void SetPlayerDisabled(bool value)

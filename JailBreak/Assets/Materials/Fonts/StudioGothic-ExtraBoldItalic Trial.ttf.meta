@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: d6397b3a78fe7bd43b583e4744c3bbe0
+timeCreated: 1511653303
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Studio Gothic Trial
+  fontNames:
+  - Studio Gothic Trial
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

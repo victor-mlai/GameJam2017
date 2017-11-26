@@ -129,8 +129,8 @@ MonoBehaviour:
     loop: 0
     playOnAwake: 0
     source: {fileID: 0}
-  - name: Inventory
-    clip: {fileID: 8300000, guid: 617a056f4a02e04428d4f076d38cf8b0, type: 3}
+  - name: EnemyDeath
+    clip: {fileID: 8300000, guid: ef75ae1dec71fda4b8597add135e780c, type: 3}
     volume: 1
     pitch: 1
     loop: 0

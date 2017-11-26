@@ -7,7 +7,6 @@ public class AudioManager : MonoBehaviour
 
     // Audio Manager tutorial
     // https://www.youtube.com/watch?v=6OT43pvUyfY4
-    // TODO sunet de harta
 
     public Sound[] sounds;
     public static AudioManager instance;
