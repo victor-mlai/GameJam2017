@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonAudio : MonoBehaviour {
+public class ButtonLogic : MonoBehaviour {
 
     AudioManager audioManager;
 

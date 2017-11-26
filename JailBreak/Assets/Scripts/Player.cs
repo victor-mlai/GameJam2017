@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     GameObject inventory;
     GameObject map;
     GameObject dialogue;
+    GameObject pause;
     AudioManager audioManager;
 
     [HideInInspector]
@@ -36,6 +37,7 @@ public class Player : MonoBehaviour
         inventory = GameObject.Find("Canvas").transform.Find("Inventory").gameObject;
         dialogue = GameObject.Find("Canvas").transform.Find("Dialogue").gameObject;
         map = GameObject.Find("Canvas").transform.Find("Map").gameObject;
+        pause = GameObject.Find("Canvas").transform.Find("Pause").gameObject;
         audioManager = GameObject.Find("AudioManager").GetComponent<AudioManager>();
     }
 
@@ -61,6 +63,11 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown("m"))
         {
             dialogue.SetActive(true);
+        }
+
+        if (Input.GetKeyDown("p"))
+        {
+            ActivatePause();
         }
 
         if (!isPlayerInputDisabled)
@@ -170,5 +177,11 @@ public class Player : MonoBehaviour
     public void SetPlayerDisabled(bool value)
     {
         isPlayerInputDisabled = value;
+    }
+
+    public void ActivatePause()
+    {
+        Time.timeScale = 0;
+        pause.SetActive(true);
     }
 }
